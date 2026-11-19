@@ -1,0 +1,74 @@
+---
+title: "Where were first-time NCT pass rates highest in 2024 compared to national average?"
+subtitle: "ST302 Data Visualisation | Group Project"
+author: "Sean Ryan Yates (24735845)"
+output:
+  html_document:
+    theme: flatly
+    code_folding: hide
+---
+
+use the Viridis R Package for colour blind safe options for the map use plasma 
+
+2023 and 2024 are full of data except for northpoint centres (otehr then that full)
+
+possible qeustion if lecturer says yes to population data: what is the average car per household assuming 3 per house given that the family had to test their car in the year 2024
+
+```         
+        - carsperhouse = pass+fail / (pop/3)
+```
+
+else;
+          if you were choosing where to book a NCT which counties had the highest first-time pass rates
+          in 2024 and how did they compare to the national average
+
+```{r}
+#initial run to load packages and load data
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(sf)
+
+load("data/cartest.Rdata")
+```
+#introduction of data
+
+#data adjustments
+```{r}
+
+#making the data in long format, 
+#centre is the name of the centre
+#outcome is pass for initial pass and fail for initial fail
+#count is the year 2024's count for each centre
+initial_longer <- cartest |>
+  transmute(
+    centre = as.character(Test.Centre),
+    outcome = recode(as.character(Statistic),
+      "Pass: Initial Test" = "pass",#make sure to mention taht pass / fail are the initial pass fail 
+      "Fail: Initial Test" = "fail",
+      .default = NA_character_
+    ),
+    count = `2024`
+  ) |>
+  filter(!is.na(outcome))
+
+#making it wider and adding a total column
+initial_wider <- initial_longer |>
+  pivot_wider(
+    names_from = outcome, 
+    values_from = count
+    ) |>
+  mutate(total = pass + fail)
+
+#removing the sum count for the graph later
+initial_wider <- initial_wider |>
+  filter(centre !="All test results")
+
+#sum of pass, fail, total tests, to find the national average passing rate
+pass_national <- sum(initial_wider$pass)
+fail_national <- sum(initial_wider$fail)
+total_tests_national<- sum(initial_wider$total)
+national_pass_rate <- 100 * pass_national/total_tests_national 
+
+```
+
