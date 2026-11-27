@@ -41,17 +41,55 @@ load("data/cartest.Rdata")
 
 ### introduction of data
 
-yappa yappa this is data Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa
+NCT is a form of car safety testing where a owner of a car is legally
+required to bring their car in to get checked for the safety of other
+drivers on the road and their own vichecles safety
+
+The data consists of NCT data reports consisting of :
+
+1.  `Statistic` which is a factor varible containing :
+
+    - `Pass: Initial Test`: where the car passed the safety test on the
+      first attempt.
+
+    - `Pass: Initial Test`: where the car passed the safety test on the
+      first attempt.
+
+    - `Fail: Initial Test`: where the car didnt not pass the safety test
+      on the first attempt.
+
+    - `Pass: Following Re-Test`: where the car failed initial safety
+      test but passed the resit safety test.
+
+    - `Fail or No Show Following Re-Test`: where the car Failed Initial
+      test and either failed the following resit of the safety test or
+      failed to show up for the following resit of the safety test .
+
+2.  `Total Number Of Passes` : a count for the total amount of cars
+    which passed the Safety test.\
+
+3.  `Total Number Of Cars Tested` : a count of all the cars tested.
+
+4.  `Test.Centre` : which is a factor of all the individual test centres
+    where the tests were preformed .
+
+5.  `2006-2012 2014-2024` : are years for which the data is recored and
+    the statistics of all the above .
+
+Questions to answer using the data:
+
+**Where were first-time NCT pass rates highest in 2024 compared to
+national average?**
+
+...
+
+...
+
+...
+
+...
 
 ### data adjustments
-
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa
 
 ```{r data-Adjustment}
 
@@ -169,23 +207,6 @@ count_above_mean<-sum(county_rates$precentage_difference>0)#find above mean coun
 
 ### Analysis
 
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-
-::::: {style="display: flex; gap: 20px; align-items: center;"}
-::: {style="width: 40%;" markdown="1"}
-### Conclusion
-
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa Yappa
-Yappa Yappa Yappa Yappa Yappa Yappa
-:::
-
-::: {markdown="1" style="width: 80%;"}
 ```{r graph,fig.align='center',fig.width=8,fig.height=8}
 #reading in the data 
 ireland <- st_read("data/ie_county_26.json", quiet = TRUE) |>
@@ -248,11 +269,32 @@ ggplot() +
   )
 
 ```
-:::
-:::::
+
+### Conclusion
 
 #### Sources
 
 [/resources](/resources)
 
-#### 
+#### Responsibilities of each member:
+
+The report was decided to be formatted as all group memebers come up
+with their own Question, Make a report for that question in the same
+format as this one, then when all questions have been answered which
+they are entirely responsable for, merge all the questions in a final
+Report which will be a joint effort of all memebers.
+
+Sean Ryan Yates (24735845):
+
+- Question : Where were first-time NCT pass rates highest in 2024
+  compared to national average?
+
+- example(banger job on intro to data) : something
+
+Ankush ...
+
+- ... ... ...
+
+...
+
+- ... .... ...
